@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
         return(
             <div
             className="
-            bg-white
+            bg-orange-100
             w-full
             flex
             border-b-[1px]
