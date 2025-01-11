@@ -2,11 +2,6 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 
-interface currentUser {
-    id: string;
-    email: string;
-}
-
 export async function POST(
     request:Request
 ){
