@@ -47,7 +47,12 @@ const ProfileDrawer:React.FC<ProfileDrawerProps> = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0">
 
-                <div />
+                <div 
+                className="
+                fixed
+                inset-0
+                bg-
+                bg-opacity-40"/>
 
             </Transition.Child>
             </Dialog>
