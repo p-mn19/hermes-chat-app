@@ -1,6 +1,7 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import { IoClose } from "react-icons/io5";
 
 interface ModalProps{
     isOpen?: boolean;
@@ -37,6 +38,7 @@ const Modal:React.FC<ModalProps> = ({
                     transition-opacity" />
 
                 </Transition.Child>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
                 <div 
                 className="flex
                 min-h-full
@@ -90,12 +92,19 @@ const Modal:React.FC<ModalProps> = ({
                                 focus:outline-none
                                 focus:ring-2
                                 focus:ring-orange-500
-                                focus:ring-offset-2">
-
+                                focus:ring-offset-2"
+                                onClick={onClose}>
+                                    <span className="sr-only">Close</span>
+                                    <IoClose 
+                                    className="
+                                    h-6
+                                    w-6"/>
                                 </button>
                             </div>
+                            {children}
                         </div>
                     </Transition.Child>
+                </div>
                 </div>
             </Dialog>
         </Transition.Root>

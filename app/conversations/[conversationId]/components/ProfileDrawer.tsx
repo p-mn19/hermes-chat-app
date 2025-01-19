@@ -2,7 +2,7 @@
 
 import useOtherUser from "@/app/hooks/useOtherUser";
 import { Conversation, User } from "@prisma/client";
-import { Fragment, useMemo } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { format } from "date-fns";
 import { Dialog, Transition } from "@headlessui/react";
 import {IoClose, IoTrash} from "react-icons/io5";
@@ -23,7 +23,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   data,
 }) => {
   const otherUser = useOtherUser(data);
-
+  const [confirmOpen,setConfirmOpen] = useState(false);
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createdAt), "PP");
   }, [otherUser.createdAt]);
@@ -43,8 +43,12 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   return (
     <>
     <Modal 
-    isOpen
-    onClose={() => {}}/>
+    isOpen={confirmOpen}
+    onClose={() => setConfirmOpen(false)}>
+        <div className="bg-orange-50 p-5">
+        <p>Hello Modal</p>
+        </div>
+        </Modal>
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
         <Transition.Child
@@ -155,7 +159,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                             </div>
                             <div className="flex gap-10 my-8">
                             <div
-                            onClick={() => {}}
+                            onClick={()=>setConfirmOpen(true)}
                             className="
                             flex
                             flex-col
@@ -164,8 +168,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                             cursor-pointer
                             hover:opacity-75">
                                 <div
-                                className="
-                                w-10
+                                className="w-10
                                 h-10
                                 bg-orange-100
                                 rounded-full
