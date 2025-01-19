@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { Dialog, Transition } from "@headlessui/react";
 import {IoClose, IoTrash} from "react-icons/io5";
 import Avatar from "@/app/components/Avatar";
+import Modal from "@/app/components/Modal";
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -40,6 +41,10 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   }, [data]);
 
   return (
+    <>
+    <Modal 
+    isOpen
+    onClose={() => {}}/>
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
         <Transition.Child
@@ -247,6 +252,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
         </div>
       </Dialog>
     </Transition.Root>
+    </>
   );
 };
 
