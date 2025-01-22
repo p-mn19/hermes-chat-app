@@ -7,6 +7,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Modal from "@/app/components/Modal";
 import {FiAlertTriangle} from "react-icons/fi";
+import { Dialog } from "@headlessui/react";
+import Button from "@/app/components/Button";
 
 interface ConfirmModalProps {
     isOpen?: boolean;
@@ -55,9 +57,47 @@ const ConfirmModal:React.FC<ConfirmModalProps> = ({
                 <FiAlertTriangle 
                 className="h-6 w-6 text-red-600"/>
             </div>
-            <div>
-                
+            <div
+            className="
+            mt-3
+            text-center
+            sm:ml-4
+            sm:mt-0
+            sm:text-left">
+                <Dialog.Title
+                as="h3"
+                className="
+                text-base
+                font-semibold
+                leading-6
+                text-orange-900">
+                    Delete Scroll
+                </Dialog.Title>
+                <div className="mt-2">
+                    <p className="text-sm text-orange-500">
+                    Are you certain you wish to cast this scroll into oblivion? This act cannot be undone!
+                    </p>
+                </div>
             </div>
+            </div>
+            <div
+            className="
+            mt-5
+            sm:mt-4
+            sm:flex
+            sm:flex-row-reverse">
+                <Button
+                disabled={isLoading}
+                danger
+                onClick={onDelete}>
+                    Delete
+                </Button>
+                <Button
+                disabled={isLoading}
+                secondary
+                onClick={onClose}>
+                    Cancel
+                </Button>
             </div>
         </Modal>
     );
