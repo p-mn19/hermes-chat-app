@@ -29,7 +29,7 @@ const Input:React.FC<InputProps> = ({
         text-sm
         font-medium
         leading-6
-        text-gray-900'
+        text-orange-900'
         htmlFor={id}
         >
             {label}
@@ -49,12 +49,12 @@ const Input:React.FC<InputProps> = ({
                 rounded-md
                 border-0
                 py-1.5
-                text-gray-900
+                text-orange-900
                 shadow-sm
                 ring-1
                 ring-inset
                 ring-gray-300
-                placeholder:text-gray-400
+                placeholder:text-orange-400
                 focus:ring-2
                 focus:ring-inset
                 focus:ring-orange-600
