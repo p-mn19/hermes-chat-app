@@ -1,5 +1,6 @@
 "use client";
 
+import Modal from "@/app/components/Modal";
 import { User } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -53,7 +54,31 @@ const GroupChatModal:React.FC<GroupChatModalProps>=({
         .finally(() => setIsLoading(false))
     }
     return(
-        <div></div>
+        <Modal
+        isOpen={isOpen}
+        onClose={onClose}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="space-y-12">
+            <div className="border-b border-orange-900/10 pb-12">
+            <h2 className="
+            text-base
+            font-semibold
+            leading-7
+            text-orange-900">
+                Gather the wanderers
+            </h2>
+            <p className="
+            mt-1
+            text-sm
+            leading-6
+            text-orange-600">
+                Create a chat with more than 2 wanderers
+            </p>   
+            </div>
+        </div>
+            </form>
+
+        </Modal>
     );
 }
 
