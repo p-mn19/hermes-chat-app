@@ -7,14 +7,18 @@ import { useState } from "react";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import ConversationBox from "./ConversationBox";
 import clsx from "clsx";
+import GroupChatModal from "./GroupChatModal";
+import { User } from "@prisma/client";
 
 
 interface ConversationListProps{
     initialItems:FullConversationType[];
+    users: User[]
 }
 
 const ConversationList:React.FC<ConversationListProps> =({
-    initialItems
+    initialItems,
+    users
 }) =>{
     const [items,setItems] = useState(initialItems);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,6 +29,7 @@ const ConversationList:React.FC<ConversationListProps> =({
     return(
     <>
     <GroupChatModal 
+    users={users}
     isOpen={isModalOpen}
     onClose={() => setIsModalOpen(false)}/>
       <aside
