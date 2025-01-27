@@ -17,11 +17,16 @@ const ConversationList:React.FC<ConversationListProps> =({
     initialItems
 }) =>{
     const [items,setItems] = useState(initialItems);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const router = useRouter();
 
     const {conversationId,isOpen } = useConversation();
     return(
+    <>
+    <GroupChatModal 
+    isOpen={isModalOpen}
+    onClose={() => setIsModalOpen(false)}/>
       <aside
       className={clsx(`
       fixed
@@ -45,6 +50,7 @@ const ConversationList:React.FC<ConversationListProps> =({
                     Scrolls
                 </div>
                 <div
+                onClick={() => setIsModalOpen(true)}
                 className="
                 rounded-full
                 p-2
@@ -64,6 +70,7 @@ const ConversationList:React.FC<ConversationListProps> =({
             ))}
         </div>
       </aside>
+      </>
     );
 }
 
