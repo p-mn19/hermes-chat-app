@@ -30,7 +30,19 @@ const Select: React.FC<SelectProps> = ({
         <ReactSelect 
         isDisabled={disabled}
         value={value}
-        onChange={onChange}/>
+        onChange={onChange}
+        isMulti
+        options={options}
+        menuPortalTarget={document.body}
+        styles={{
+            menuPortal:(base)=>({
+                ...base,
+                zIndex: 9999
+            })
+        }}
+        classNames={{
+            control:() => "text-sm"
+        }}/>
             </div>
         </div>
     );
