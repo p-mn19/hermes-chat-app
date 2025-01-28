@@ -1,5 +1,6 @@
 "use client";
 
+import Input from "@/app/components/inputs/Input";
 import Modal from "@/app/components/Modal";
 import { User } from "@prisma/client";
 import axios from "axios";
@@ -7,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import Select from "@/app/components/inputs/Select";
 
 interface GroupChatModalProps {
     isOpen?:boolean;
@@ -20,7 +22,7 @@ const GroupChatModal:React.FC<GroupChatModalProps>=({
     users
 }) => {
     const router = useRouter();
-    const [isloading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         register,
@@ -73,7 +75,31 @@ const GroupChatModal:React.FC<GroupChatModalProps>=({
             leading-6
             text-orange-600">
                 Create a chat with more than 2 wanderers
-            </p>   
+            </p> 
+            <div className="
+            mt-10
+            flex
+            flex-col
+            gap-y-8">
+                <Input 
+                register={register}
+                label="Name"
+                id="name"
+                disabled={isLoading}
+                required
+                errors={errors}/>
+                <Select 
+                disabled={isLoading}
+                label="Members"
+                options={users.map((user) => ({
+                    value:user.id,
+                    label:user.name
+                }))}
+                onChange={(value) => setValue('members',value,{
+                    shouldValidate:true
+                })}
+                value={members}/>
+            </div>  
             </div>
         </div>
             </form>
