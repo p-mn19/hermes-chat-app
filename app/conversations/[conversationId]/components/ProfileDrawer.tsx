@@ -197,6 +197,26 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                 px-4
                                 sm:space-y-6
                                 sm:px-6">
+                                  {data.isGroup && (
+                                    <div>
+                                      <dt
+                                      className="
+                                      text-sm
+                                      font-medium
+                                      text-orange-500
+                                      sm:w-40
+                                      sm:flex-shrink-0">
+                                        Emails
+                                      </dt>
+                                      <dd className="
+                                      mt-1
+                                      text-sm
+                                      text-orange-900
+                                      sm:col-span-2">
+                                        {data.users.map((user) => user.email).join(', ')}
+                                      </dd>
+                                    </div>
+                                  )}
                                     {!data.isGroup && (
                                         <div>
                                             <dt
