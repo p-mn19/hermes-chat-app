@@ -8,6 +8,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import {IoClose, IoTrash} from "react-icons/io5";
 import Avatar from "@/app/components/Avatar";
 import ConfirmModal from "./ConfirmModal";
+import AvatarGroup from "@/app/components/AvatarGroup";
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -144,7 +145,11 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                         <div className="
                         flex flex-col items-center">
                             <div className="mb-2">
+                              {data.isGroup ? (
+                                <AvatarGroup users={data.users}/>
+                              ): (
                         <Avatar user={otherUser}/>
+                      )}
                             </div>
                             <div className="text-orange-600">
                                 {title}
