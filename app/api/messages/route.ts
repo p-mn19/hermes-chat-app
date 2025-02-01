@@ -75,7 +75,7 @@ export async function POST(
                 id: conversationId,
                 messages:[lastMessage]
             })
-        });
+        });  
         return NextResponse.json(newMessage);
     }catch(error:any){
         console.log(error,'ERROR_MESSAGES');
